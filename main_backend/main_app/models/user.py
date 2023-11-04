@@ -1,12 +1,11 @@
 import uuid
-import re
+
 from django.contrib import admin
-from django.core.exceptions import ValidationError
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from django.utils import timezone
 
-from main_app.constants import UserConstants
+from main_app.validators.user_validator import UserValidator
 
 
 class UserManager(BaseUserManager):
@@ -14,7 +13,7 @@ class UserManager(BaseUserManager):
         if not username:
             raise ValueError("The Username field must be set")
 
-        self.validate_password(password)
+        UserValidator.validate_strong_password(password)
 
         user = self.model(username=username, **extra_fields)
         user.set_password(password)
@@ -31,20 +30,6 @@ class UserManager(BaseUserManager):
             raise ValueError("Superuser must have is_superuser=True.")
 
         return self.create_user(username, password, **extra_fields)
-
-    def validate_password(self, password):
-        if len(password) < UserConstants.MIN_PASSWORD_LENGTH:
-            raise ValidationError(
-                "Password must be at least 12 characters long.")
-        if not re.search(r'[A-Z]', password):
-            raise ValidationError(
-                "Password must contain at least one uppercase letter.")
-        if not re.search(r'[a-z]', password):
-            raise ValidationError(
-                "Password must contain at least one lowercase letter.")
-        if not re.search(r'[!@#$%^&*()_+{}[\]:;<>,.?~\\-]', password):
-            raise ValidationError(
-                "Password must contain at least one special character.")
 
 
 class User(AbstractBaseUser, PermissionsMixin):

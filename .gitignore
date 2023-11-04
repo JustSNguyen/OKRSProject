@@ -3,3 +3,4 @@ Requirements.txt
 .env
 env/
 .vscode/
+__pycache__/
