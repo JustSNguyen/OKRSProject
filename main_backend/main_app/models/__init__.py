@@ -1,1 +1,1 @@
-from .user import User, UserAdmin, UserManager
+from main_app.models.user import User, UserAdmin, UserManager

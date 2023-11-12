@@ -1,8 +1,8 @@
 from django.test import TestCase, Client
-from decouple import config
 
 from main_app.models import User
 from main_app.tests.utils.send_request import send_json_request, RequestInfo
+from main_app.tests.configs.test_sign_up_view_config import TestSignUpViewConfig
 
 
 class TestSignUpView(TestCase):
@@ -12,8 +12,8 @@ class TestSignUpView(TestCase):
 
         self.already_existed_username = "already_existed_username"
         self.valid_username = "valid_username"
-        self.user_strong_password = config("TEST_USER_STRONG_PASSWORD")
-        self.user_weak_password = config("TEST_USER_WEAK_PASSWORD")
+        self.user_strong_password = TestSignUpViewConfig.STRONG_PASSWORD
+        self.user_weak_password = TestSignUpViewConfig.WEAK_PASSWORD
         User.objects.create_user(username=self.already_existed_username,
                                  password=self.user_strong_password)
 
@@ -80,6 +80,18 @@ class TestSignUpView(TestCase):
         message_if_test_fails = f"Saved password should not be equal to sent password"
         self.assertNotEqual(
             user.password, self.user_strong_password, message_if_test_fails)
+
+    def test_password_should_not_be_in_response_if_sign_up_successfully(self):
+        data = {
+            "username": self.valid_username,
+            "password": self.user_strong_password
+        }
+        request_info = RequestInfo(
+            data=data, url=self.SIGN_UP_URL, method="POST")
+        response = send_json_request(self.client, request_info)
+
+        self.assertNotIn("password", response.json(),
+                         "Password should not be in response")
 
     def test_disallowed_fields_should_not_be_saved(self):
         data = {

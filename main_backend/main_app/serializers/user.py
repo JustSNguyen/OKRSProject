@@ -27,6 +27,11 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'password', 'date_created']
+    
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data.pop('password', None)
+        return data
 
     def create(self, data):
         return User.objects.create_user(data["username"], data["password"])
