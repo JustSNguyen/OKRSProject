@@ -1,9 +1,13 @@
 import re
 from main_app.config.user_config import UserConfig
 from django.core.exceptions import ValidationError
+from rest_framework.validators import UniqueValidator
 
 
 class UserValidator:
+    def validate_unique_username(queryset):
+        return UniqueValidator(queryset=queryset, message="An user with that username already existed")
+
     def validate_strong_password(password):
         if len(password) < UserConfig.MIN_PASSWORD_LENGTH:
             raise ValidationError(

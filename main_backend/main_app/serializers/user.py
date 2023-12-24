@@ -1,21 +1,16 @@
 from rest_framework import serializers
-from rest_framework.validators import UniqueValidator
-
 from main_app.models import User
 from main_app.validators.user_validator import UserValidator
 
 
 class UserSerializer(serializers.ModelSerializer):
-    username_unique_validator = UniqueValidator(
-        queryset=User.objects.all(),
-        message="An user with that username already existed")
-
     username = serializers.CharField(
         error_messages={
             'required': 'Username is required',
         },
 
-        validators=[username_unique_validator],
+        validators=[UserValidator.validate_unique_username(
+            queryset=User.objects.all())],
     )
     password = serializers.CharField(
         error_messages={
@@ -27,7 +22,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'password', 'date_created']
-    
+
     def to_representation(self, instance):
         data = super().to_representation(instance)
         data.pop('password', None)
