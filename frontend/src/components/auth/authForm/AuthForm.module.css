@@ -1,0 +1,109 @@
+.container {
+  background-color: #191927;
+  min-height: 100vh;
+  position: relative;
+  padding-top: 3.6rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  width: 20%;
+  z-index: 10;
+}
+
+.otherOptionButton:link,
+.otherOptionButton:visited {
+  text-decoration: none;
+  color: #f4f4f4;
+
+  font-weight: bold;
+  font-size: 1.8rem;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  transition: all 0.5s;
+
+  position: absolute;
+  right: 3%;
+  top: 12px;
+}
+
+.otherOptionButton:hover,
+.otherOptionButton:active {
+  color: #14a5ae;
+}
+
+.header__title {
+  color: #14a5ae;
+  font-size: 3rem;
+  font-weight: bold;
+
+  margin-bottom: 4px;
+}
+
+.header__message {
+  color: #646d7d;
+  font-size: 2rem;
+  font-weight: bold;
+
+  margin-bottom: 3.2rem;
+}
+
+.form__controlGroups {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  margin-bottom: 2.4rem;
+}
+
+.form__controlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.controlGroup__label {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #646d7d;
+}
+
+.form__submitButton {
+  width: 100%;
+
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1.8rem;
+
+  border-radius: 10px;
+  border: none;
+
+  cursor: pointer;
+
+  padding: 12px 12px;
+
+  background-color: #14a5ae;
+  color: #f4f4f4;
+
+  transition: all 0.5s;
+}
+
+.form__submitButton:hover {
+  background-color: #10848b;
+}
+
+.wavePattern__container {
+  position: absolute;
+  bottom: 0;
+}
+
+.wavePattern {
+  width: 100%;
+}

@@ -1,0 +1,19 @@
+.input {
+  border-radius: 10px;
+  border: none;
+
+  height: 4.4rem;
+
+  background-color: #222230;
+  color: #14a5ae;
+
+  font-family: "Nunito";
+  font-weight: bold;
+  font-size: 1.8rem;
+
+  padding: 4px 12px;
+}
+
+.input:focus {
+  outline: none;
+}

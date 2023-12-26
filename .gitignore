@@ -1,6 +1,7 @@
 OKRS_Explained.txt
 Requirements.txt 
-.env
+*.env
 env/
 .vscode/
 __pycache__/
+DesignGuidelines/
