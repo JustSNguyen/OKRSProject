@@ -2,7 +2,7 @@ from django.test import TestCase, Client
 
 from main_app.models import User
 from main_app.tests.utils.send_request import send_json_request, RequestInfo
-from main_app.tests.configs.test_sign_up_view_config import TestSignUpViewConfig
+from main_app.tests.configs.test_user_config import TestUserConfig
 
 
 class TestSignUpView(TestCase):
@@ -12,8 +12,8 @@ class TestSignUpView(TestCase):
 
         self.already_existed_username = "already_existed_username"
         self.valid_username = "valid_username"
-        self.user_strong_password = TestSignUpViewConfig.STRONG_PASSWORD
-        self.user_weak_password = TestSignUpViewConfig.WEAK_PASSWORD
+        self.user_strong_password = TestUserConfig.STRONG_PASSWORD
+        self.user_weak_password = TestUserConfig.WEAK_PASSWORD
         User.objects.create_user(username=self.already_existed_username,
                                  password=self.user_strong_password)
 

@@ -3,10 +3,11 @@ import requests
 
 
 class RequestInfo:
-    def __init__(self, url, method="GET", data={}):
+    def __init__(self, url, method="GET", data={}, headers={}):
         self.url = url
         self.method = method
         self.data = data
+        self.headers = headers
 
 
 def send_json_request(client, request_info):
@@ -18,7 +19,10 @@ def send_json_request(client, request_info):
         "Content-Type": "application/json"
     }
 
+    for key in request_info.headers:
+        headers[key] = request_info.headers[key]
+
     response = client.generic(
-        request_info.method, request_info.url, data=json_data, headers=headers)
+        request_info.method, request_info.url, data=json_data, headers=headers, follow=False)
 
     return response

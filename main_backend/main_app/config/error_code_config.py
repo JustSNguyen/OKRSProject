@@ -1,0 +1,7 @@
+class ErrorCodeConfig:
+    NOT_FOUND_TOKEN = 0
+    INVALID_TOKEN = 1
+    EXPIRED_TOKEN = 2
+
+    MISSING_REQUIRED_FIELD = 3
+    INVALID_DATA = 4
