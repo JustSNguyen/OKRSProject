@@ -1,4 +1,3 @@
-import "./App.css";
 import LoginForm from "./components/auth/loginForm/LoginForm";
 
 function App() {

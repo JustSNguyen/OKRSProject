@@ -107,3 +107,59 @@
 .wavePattern {
   width: 100%;
 }
+
+@media (max-width: 1280px) {
+  .form__submitButton {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .content {
+    width: 25%;
+  }
+}
+
+@media (max-width: 900px) {
+  .content {
+    width: 30%;
+  }
+}
+
+@media (max-width: 750px) {
+  .content {
+    width: 35%;
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+    width: 40%;
+  }
+}
+
+@media (max-width: 500px) {
+  .content {
+    width: 45%;
+  }
+}
+
+@media (max-width: 450px) {
+  .header__title {
+    font-size: 2.4rem;
+  }
+
+  .content {
+    width: 50%;
+  }
+}
+
+@media (max-width: 300px) {
+  .header__title {
+    font-size: 2rem;
+  }
+
+  .content {
+    width: 55%;
+  }
+}

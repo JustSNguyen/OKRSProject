@@ -31,7 +31,7 @@ const AuthForm = ({ isLogin }) => {
             <li className={authFormClasses.form__controlGroup}>
               <label
                 className={authFormClasses.controlGroup__label}
-                for="username"
+                htmlFor="username"
               >
                 Username
               </label>
@@ -41,7 +41,7 @@ const AuthForm = ({ isLogin }) => {
             <li className={authFormClasses.form__controlGroup}>
               <label
                 className={authFormClasses.controlGroup__label}
-                for="password"
+                htmlFor="password"
               >
                 Password
               </label>
