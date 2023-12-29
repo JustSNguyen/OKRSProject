@@ -1,9 +1,9 @@
-import LoginForm from "./components/auth/loginForm/LoginForm";
+import AppRouter from "./routers/AppRouter";
 
 function App() {
   return (
     <div className="App">
-      <LoginForm />
+      <AppRouter />
     </div>
   );
 }

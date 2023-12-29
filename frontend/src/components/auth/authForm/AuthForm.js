@@ -2,8 +2,11 @@ import authFormClasses from "./AuthForm.module.css";
 import wavePattern from "../../../assets/wavePattern.png";
 import { useRef, useState } from "react";
 import Input from "../../common/Input/Input";
+import { Link } from "react-router-dom";
 
 const AuthForm = ({ isLogin }) => {
+  console.log(isLogin);
+
   const headerTitle = isLogin ? "Here you can Login" : "Here you can Sign up";
   const headerMessage = isLogin ? "Welcome back :)" : "Let's join us";
   const submitButtonText = isLogin ? "Login" : "Sign up";
@@ -15,10 +18,10 @@ const AuthForm = ({ isLogin }) => {
 
   return (
     <div className={authFormClasses.container}>
-      <a className={authFormClasses.otherOptionButton} href={otherOptionLink}>
+      <Link className={authFormClasses.otherOptionButton} to={otherOptionLink}>
         {otherOptionText}
         <ion-icon name="arrow-forward-outline"></ion-icon>
-      </a>
+      </Link>
 
       <div className={authFormClasses.content}>
         <header className={authFormClasses.header}>
