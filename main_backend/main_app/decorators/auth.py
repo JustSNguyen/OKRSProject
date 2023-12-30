@@ -3,6 +3,7 @@ from functools import wraps
 from rest_framework.response import Response
 from main_app.config.jwt_config import JWTConfig
 from main_app.config.error_code_config import ErrorCodeConfig
+from main_app.models.user import User
 
 
 def check_authentication(view_func):
@@ -23,7 +24,13 @@ def check_authentication(view_func):
 
             payload = jwt.decode(token, jwt_secret_key,
                                  algorithms=[jwt_algorithm])
-            request.user_id = payload.get('id')
+
+            user_id = payload.get('id')
+            user = User.objects.get(id=user_id)
+            if not user:
+                return Response({"status": "fail", "message": "User with the specified id is not found", "code": ErrorCodeConfig.USER_NOT_FOUND}, status=401)
+
+            request.user_id = user_id
 
         except jwt.ExpiredSignatureError:
             return Response(

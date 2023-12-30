@@ -5,7 +5,7 @@ from main_app.models import User
 from main_app.tests.utils.send_request import send_json_request, RequestInfo
 
 
-class TestSignUpView(TestCase):
+class TestLoginView(TestCase):
     def setUp(self):
         self.client = Client()
 

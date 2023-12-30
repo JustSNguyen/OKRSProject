@@ -9,6 +9,7 @@ from main_app.models.user import User
 from main_app.config.user_config import UserConfig
 from main_app.config.jwt_config import JWTConfig
 from main_app.config.error_code_config import ErrorCodeConfig
+from main_app.decorators.auth import check_authentication
 
 
 class AuthViews:
@@ -60,3 +61,8 @@ class AuthViews:
                             max_age=jwt_expiration_time_in_seconds, httponly=True, samesite="Strict")
 
         return response
+
+    @api_view(["POST"])
+    @check_authentication
+    def check_authentication_view(request):
+        return Response({"status": "success"}, 200)

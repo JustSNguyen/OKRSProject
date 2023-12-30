@@ -5,3 +5,5 @@ class ErrorCodeConfig:
 
     MISSING_REQUIRED_FIELD = 3
     INVALID_DATA = 4
+
+    USER_NOT_FOUND = 5
